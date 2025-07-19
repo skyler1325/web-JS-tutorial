@@ -3,57 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web JS Tutorial</title>
+  <title>JS for Web Development</title>
   <style>
-    /* Basic Reset */
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      background-color: #f8f9fa;
-      color: #333;
-      padding: 40px;
-    }
-
-    main {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1, h3, h4 {
-      color: #0056b3;
-      margin-bottom: 15px;
-    }
-
-    p {
-      margin-bottom: 20px;
+      background: #f4f6f8;
+      color: #222;
+      padding: 30px;
       line-height: 1.6;
     }
 
+    main {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      color: #0066cc;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
     button {
-      padding: 10px 15px;
-      margin-bottom: 15px;
+      padding: 10px 20px;
+      background: #007bff;
       border: none;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
       border-radius: 5px;
-      transition: background-color 0.2s ease;
+      color: white;
+      margin: 10px 5px 20px 0;
+      cursor: pointer;
+      transition: background 0.2s ease;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background: #0056b3;
+    }
+
+    code {
+      background: #e1ecf4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.95em;
     }
 
     footer {
-      margin-top: 50px;
-      font-size: 0.9em;
+      margin-top: 60px;
       text-align: center;
-      color: #555;
+      color: #666;
+      font-size: 0.9em;
     }
 
     a {
@@ -64,47 +67,123 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .output {
+      margin: 15px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-left: 5px solid #007bff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      margin-bottom: 40px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    nav li {
+      margin: 5px 0;
+    }
+
+    nav a {
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <main>
     <h1>JS for Web Development</h1>
 
-    <section>
-      <h3>Alert Popups</h3>
-      <button onclick="alert('Hello, world')">Click me</button>
-      <p>Alert popups are surprisingly simple. It only takes one line of JavaScript: <code>alert()</code></p>
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#popups">Alert Popups</a></li>
+        <li><a href="#buttons">3 Ways to Handle Button Clicks</a></li>
+        <li><a href="#dom">Dynamic DOM Manipulation</a></li>
+        <li><a href="#calculator">Mini Calculator Demo</a></li>
+      </ul>
+    </nav>
+
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>This tutorial introduces essential JavaScript techniques for making interactive websites, including popup messages, event handling, and dynamic page changes. Perfect for beginners learning front-end development.</p>
     </section>
 
-    <section>
-      <h3>Three Ways to Trigger JavaScript from Buttons</h3>
+    <section id="popups">
+      <h2>Alert Popups</h2>
+      <button onclick="alert('Hello, world')">Click me</button>
+      <p><code>alert()</code> shows a simple message box and is useful for quick debugging or messages.</p>
+    </section>
 
-      <h4>1. Direct <code>onclick</code> (one-liner only)</h4>
+    <section id="buttons">
+      <h2>Three Ways to Handle Button Clicks</h2>
+
+      <h3>1. Direct <code>onclick</code> (one-liner only)</h3>
       <button onclick="alert('Direct onclick: Hello!')">Direct onclick</button>
-      <p>This method is great for quick actions, but not ideal for complex code.</p>
+      <p>This method is fast for small actions, but gets messy with multiple lines of code.</p>
 
-      <h4>2. <code>onclick</code> with a Function</h4>
+      <h3>2. <code>onclick</code> with a Named Function</h3>
       <button onclick="customAlert()">Function onclick</button>
-      <p>Organizing code in named functions improves readability and reusability.</p>
+      <p>Using functions keeps your code organized and reusable.</p>
 
-      <h4>3. Using <code>addEventListener</code></h4>
+      <h3>3. <code>addEventListener</code> Method</h3>
       <button id="listenerBtn">Event Listener</button>
-      <p>This approach is preferred in modern web development—powerful and flexible!</p>
+      <p>This technique is best for flexibility and modular JavaScript development.</p>
+    </section>
+
+    <section id="dom">
+      <h2>Dynamic DOM Manipulation</h2>
+      <button onclick="changeText()">Change Paragraph Text</button>
+      <button onclick="changeColor()">Change Page Background</button>
+      <p id="textSample">This text will be changed when you click the button.</p>
+    </section>
+
+    <section id="calculator">
+      <h2>Mini Calculator Demo</h2>
+      <input type="number" id="num1" placeholder="Number 1">
+      <input type="number" id="num2" placeholder="Number 2">
+      <button onclick="calculateSum()">Add</button>
+      <div class="output" id="resultBox">Result will appear here</div>
     </section>
 
     <footer>
       <p>If you want to create HTML and CSS for your website, visit <a href="https://skyler1325.github.io/project-not-ready/">HTML & CSS for Webpages</a>.</p>
+      <p>Hosted proudly on JS.org</p>
     </footer>
   </main>
 
   <script>
+    // For function onclick button
     function customAlert() {
       alert("Function onclick: Hi there!");
     }
 
+    // For event listener button
     document.getElementById("listenerBtn").addEventListener("click", function () {
       alert("Event listener: Greetings!");
     });
+
+    // DOM manipulation examples
+    function changeText() {
+      document.getElementById("textSample").textContent = "Boom! The text has changed.";
+    }
+
+    function changeColor() {
+      document.body.style.backgroundColor = "#d2f0d2";
+    }
+
+    // Mini Calculator Demo
+    function calculateSum() {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      const result = num1 + num2;
+      document.getElementById("resultBox").textContent = `Result: ${result}`;
+    }
   </script>
 </body>
 </html>
